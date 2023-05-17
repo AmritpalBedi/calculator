@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc-body {
+    display: flex;
+    flex-direction: column;
+    border: 10px solid;
+    border-radius: 18px;
+    width: 550px;
+    height: 650px;
+    margin-top: 50px;
+    background-color: darkgray;
+}
+
+.screen {
+    align-self: center;
+    border: 3px solid;
+    border-radius: 18px;
+    width: 450px;
+    height: 100px;
+    margin-top: 25px;
+    background-color: aliceblue;
+    text-align: right;
+}
+
+.remove {
+    display: flex;
+    align-self: center;
+    /* border: 5px solid; */
+    border-radius: 18px;
+    width: 450px;
+    height: 60px;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.clear,
+.delete {
+    width: auto;
+    border: 3px solid;
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+.clear {
+    margin-right: auto;
+    flex: auto;
+}
+
+.delete {
+    margin-left: auto;
+    flex: auto;
+}
+
+.operations {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    margin-top: 15px;
+    border-radius: 18px;
+    width: 450px;
+    height: 400px;
+    margin-bottom: 25px;
+}
