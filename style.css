@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: gray;
+    background-color: rgba(5, 6, 80, 0.591);;
     align-items: center;
     justify-content: center;
 }
@@ -13,7 +13,7 @@ body {
     border-radius: 18px;
     width: 550px;
     height: 650px;
-    margin-top: 50px;
+    margin-top: 80px;
     background-color: darkgray;
 }
 
@@ -58,11 +58,13 @@ body {
 .clear {
     margin-right: auto;
     flex: auto;
+    background-color: rgba(40, 42, 171, 0.591);
 }
 
 .delete {
     margin-left: auto;
     flex: auto;
+    background-color: rgba(194, 41, 41, 0.591);
 }
 
 .operations {
@@ -86,4 +88,5 @@ body {
     width: 100px;
     flex: auto;
     border-radius: 8px;
+    background-color: rgba(199, 214, 85, 0.801);
 }
