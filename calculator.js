@@ -16,61 +16,83 @@ function divide(x, y) {
 
 function operate(x, operator, y) {
     if (operator == "+") {
-        add(x, y)
+        return add(x, y)
     }
     else if (operator == "-") {
-        sub(x, y)
+        return sub(x, y)
     }
-    else if (operator == "*") {
-        multiply(x, y)
+    else if (operator == "x") {
+        return multiply(x, y)
     }
     else if (operator == "/") {
-        divide(x, y)
+        return divide(x, y)
     }
 }
 
 const screen = document.querySelector(".nums");
-
 const digits = document.querySelectorAll(".digits");
-let num = 0;
+
+let temp;
+let firstNum;
+let secondNum;
+let symbol;
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
-        if (screen.textContent.length == 15) {
-            screen.textContent = screen.textContent;
+        if (temp) {
+            firstNum = +temp;
+            screen.textContent = "";
+            temp = undefined;
+        }
+        if (digit.textContent == "+") {
+            symbol = "+";
+            temp = screen.textContent;
+        }
+        else if (digit.textContent == "-") {
+            symbol = "-";
+            temp = screen.textContent;
+        }
+        else if (digit.textContent == "x") {
+            symbol = "x";
+            temp = screen.textContent;
         }
         else {
-            if (screen.textContent == "0") {
-                screen.textContent = digit.textContent;
+            if (screen.textContent.length == 15) {
+                screen.textContent = screen.textContent;
             }
             else {
-                screen.textContent += digit.textContent;
+                if (screen.textContent == "0") {
+                    screen.textContent = digit.textContent;
+                }
+                else {
+                    screen.textContent += digit.textContent;
+                }
             }
+        }
+        if (firstNum) {
+            secondNum = +screen.textContent;
         }
     });
 });
 
+const equal = document.querySelector("#equal");
+equal.addEventListener("click", () => {
+    if (firstNum && secondNum) {
+        screen.textContent = operate(firstNum, symbol, secondNum);
+    }
+})
+
+
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
     screen.textContent = "0";
+    firstNum = undefined;
+    secondNum = undefined;
+    temp = undefined;
 })
 
 const del = document.querySelector(".delete");
 del.addEventListener("click", () => {
-    screen.textContent.length == 1 ? screen.textContent = 0:
-    screen.textContent = screen.textContent.slice(0, -1);
+    screen.textContent.length == 1 ? screen.textContent = 0 :
+        screen.textContent = screen.textContent.slice(0, -1);
 })
-
-// const addition = document.querySelector("#add");
-// add.addEventListener("click", () => {
-//     let firstNum = +screen.textContent;
-
-// })
-
-// just using to test
-// const asdad = document.querySelectorAll(".operation");
-// asdad.forEach((digit) => {
-//     digit.addEventListener("click", () => {
-//         alert(screen.textContent.length)
-//     })
-// })
 
