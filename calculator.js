@@ -38,6 +38,11 @@ let secondNum;
 let symbol;
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
+        if (firstNum && secondNum) {
+            if (digit.textContent == "+" || digit.textContent == "-" ||digit.textContent == "/" ||digit.textContent == "x") {
+                screen.textContent = operate(firstNum, symbol, secondNum);
+            }
+        }
         if (temp) {
             firstNum = +temp;
             screen.textContent = "";
@@ -53,6 +58,10 @@ digits.forEach((digit) => {
         }
         else if (digit.textContent == "x") {
             symbol = "x";
+            temp = screen.textContent;
+        }
+        else if (digit.textContent == "÷") {
+            symbol = "/";
             temp = screen.textContent;
         }
         else {
