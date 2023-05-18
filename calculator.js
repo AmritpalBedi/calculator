@@ -1,17 +1,33 @@
 function add(x, y) {
-    return x + y;
+    let z = x + y;
+    if (z.toString().length > 11) {
+        z = z.toPrecision(11)
+    }
+    return z;
 }
 
 function sub(x, y) {
-    return x - y;
+    let z = x - y;
+    if (z.toString().length > 11) {
+        z = z.toPrecision(11)
+    }
+    return z;
 }
 
 function multiply(x, y) {
-    return x * y;
+    let z = x * y;
+    if (z.toString().length > 11) {
+        z = z.toPrecision(11)
+    }
+    return z;
 }
 
 function divide(x, y) {
-    return x / y;
+    let z = x / y;
+    if (z.toString().length > 11) {
+        z = z.toPrecision(11)
+    }
+    return z;
 }
 
 function operate(x, operator, y) {
@@ -39,7 +55,7 @@ let symbol;
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
         if (firstNum && secondNum) {
-            if (digit.textContent == "+" || digit.textContent == "-" ||digit.textContent == "/" ||digit.textContent == "x") {
+            if (digit.textContent == "+" || digit.textContent == "-" ||digit.textContent == "÷" ||digit.textContent == "x") {
                 screen.textContent = operate(firstNum, symbol, secondNum);
             }
         }
