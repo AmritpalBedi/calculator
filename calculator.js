@@ -1,4 +1,5 @@
 function add(x, y) {
+    y = +y;
     let z = x + y;
     if (z.toString().length > 11) {
         z = z.toPrecision(11)
@@ -7,6 +8,7 @@ function add(x, y) {
 }
 
 function sub(x, y) {
+    y = +y;
     let z = x - y;
     if (z.toString().length > 11) {
         z = z.toPrecision(11)
@@ -15,6 +17,7 @@ function sub(x, y) {
 }
 
 function multiply(x, y) {
+    y = +y;
     let z = x * y;
     if (z.toString().length > 11) {
         z = z.toPrecision(11)
@@ -23,6 +26,10 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
+    if (y == "0") {
+        alert("Stupid! You cannot divide by 0!")
+    }
+    y = +y;
     let z = x / y;
     if (z.toString().length > 11) {
         z = z.toPrecision(11)
@@ -52,10 +59,17 @@ let temp;
 let firstNum;
 let secondNum;
 let symbol;
+let zeroDiv;
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
+        if (screen.textContent == "Infinity") {
+            screen.textContent = "0";
+            firstNum = undefined;
+            secondNum = undefined;
+            temp = undefined;
+        }
         if (firstNum && secondNum) {
-            if (digit.textContent == "+" || digit.textContent == "-" ||digit.textContent == "÷" ||digit.textContent == "x") {
+            if (digit.textContent == "+" || digit.textContent == "-" || digit.textContent == "÷" || digit.textContent == "x") {
                 screen.textContent = operate(firstNum, symbol, secondNum);
             }
         }
@@ -89,12 +103,22 @@ digits.forEach((digit) => {
                     screen.textContent = digit.textContent;
                 }
                 else {
-                    screen.textContent += digit.textContent;
+                    if (digit.textContent == ".") {
+                        if (screen.textContent.includes(".")) {
+                            screen.textContent = screen.textContent;
+                        }
+                        else {
+                            screen.textContent += digit.textContent;
+                        }
+                    }
+                    else {
+                        screen.textContent += digit.textContent;
+                    }
                 }
             }
         }
         if (firstNum) {
-            secondNum = +screen.textContent;
+            secondNum = screen.textContent;
         }
     });
 });
@@ -108,7 +132,7 @@ equal.addEventListener("click", () => {
 
 
 const clear = document.querySelector(".clear");
-clear.addEventListener("click", () => {
+let pow = clear.addEventListener("click", () => {
     screen.textContent = "0";
     firstNum = undefined;
     secondNum = undefined;
